@@ -59,7 +59,7 @@ export const useChatStore = create(
         set(() => ({ inputPrompt }))
       },
       async addMessage() {
-        const { style, size, apiKey, quality } = useConfigStore.getState()
+        const { style, size, apiKey, quality, baseURL } = useConfigStore.getState()
         if (!apiKey) {
           get().toggleApiKeyDialog(true)
           return
@@ -77,6 +77,7 @@ export const useChatStore = create(
         }))
         const openai = new OpenAI({
           apiKey: apiKey,
+          baseURL,
           dangerouslyAllowBrowser: true,
         })
         const options: ImageGenerateParams = {

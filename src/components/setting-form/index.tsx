@@ -9,7 +9,8 @@ const qualities: Quality[] = ['standard', 'hd']
 const styles: Style[] = ['vivid', 'natural']
 
 export const SettingForm = () => {
-  const { quality, setQuality, size, setSize, style, setStyle, apiKey, setAPIKey, reset } = useConfigStore()
+  const { quality, setQuality, size, setSize, style, setStyle, apiKey, setAPIKey, reset, baseURL, setBaseURL } =
+    useConfigStore()
 
   return (
     <div className="flex w-full flex-col space-y-4">
@@ -78,6 +79,11 @@ export const SettingForm = () => {
       <div>
         <label className="block py-2">API Key</label>
         <Input value={apiKey} onChange={(e) => setAPIKey(e.target.value)} type="password"></Input>
+      </div>
+
+      <div>
+        <label className="block py-2">BaseURL</label>
+        <Input value={baseURL} onChange={(e) => setBaseURL(e.target.value)} type="text"></Input>
       </div>
 
       <div className="flex justify-end">

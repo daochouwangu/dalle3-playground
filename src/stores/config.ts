@@ -12,6 +12,9 @@ type ConfigStore = {
   apiKey: string
   setAPIKey: (key: string) => void
 
+  baseURL: string
+  setBaseURL: (url: string) => void
+
   quality: Quality
   setQuality: (quality: Quality) => void
 
@@ -35,6 +38,10 @@ export const useConfigStore = create(
     (set, get) => ({
       ...DEFAULT_CONFIG,
       apiKey: '',
+      baseURL: 'https://api.openai.com/v1/',
+      setBaseURL(url) {
+        set({ baseURL: url })
+      },
       setAPIKey(key) {
         set({ apiKey: key })
       },
